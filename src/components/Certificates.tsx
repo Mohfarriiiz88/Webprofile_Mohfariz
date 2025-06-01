@@ -1,46 +1,52 @@
-
 import React, { useState } from 'react';
 
-const Certificates = () => {
+interface Certificate {
+  id: number;
+  name: string;
+  issuer: string;
+  image: string; // nama file di public/images
+}
+
+const Certificates: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
-  const certificates = [
+  const certificates: Certificate[] = [
     {
       id: 1,
       name: 'Web Development Certification',
       issuer: 'Tech Academy',
-      image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=100&h=100&fit=crop'
+      image: 'images.jpg'
     },
     {
       id: 2,
       name: 'Mobile App Development',
       issuer: 'Flutter Institute',
-      image: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=100&h=100&fit=crop'
+      image: 'images.jpg'
     },
     {
       id: 3,
       name: 'Database Management',
       issuer: 'SQL Masters',
-      image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=100&h=100&fit=crop'
+      image: 'images.jpg'
     },
     {
       id: 4,
       name: 'UI/UX Design Fundamentals',
       issuer: 'Design Hub',
-      image: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=100&h=100&fit=crop'
+      image: 'images.jpg'
     },
     {
       id: 5,
       name: 'Cloud Computing Essentials',
       issuer: 'Cloud Academy',
-      image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=100&h=100&fit=crop'
+      image: 'images.jpg'
     },
     {
       id: 6,
       name: 'Cybersecurity Fundamentals',
       issuer: 'Security Institute',
-      image: 'https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=100&h=100&fit=crop'
+      image: 'images.jpg'
     }
   ];
 
@@ -65,32 +71,38 @@ const Certificates = () => {
           {certificates.map((certificate) => (
             <div
               key={certificate.id}
-              className="bg-gray-100 rounded-2xl p-4 h-32 flex items-center cursor-pointer transition-all duration-300 hover:shadow-lg group"
+              className={
+                // Lihat baris di bawah untuk modifikasi styling
+                "bg-black-300 bg-opacity-50 border border-white " +
+                "rounded-2xl p-4 h-32 flex items-center cursor-pointer " +
+                "transition-all duration-300 hover:shadow-lg group"
+              }
               onMouseMove={(e) => handleMouseMove(e, certificate.id)}
               onMouseLeave={() => setHoveredCard(null)}
               onClick={() => console.log(`Clicked certificate: ${certificate.name}`)}
               style={{
-                transform: hoveredCard === certificate.id 
-                  ? `perspective(1000px) rotateX(${mousePosition.y}deg) rotateY(${mousePosition.x}deg) scale(1.05)`
-                  : 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)',
+                transform:
+                  hoveredCard === certificate.id
+                    ? `perspective(1000px) rotateX(${mousePosition.y}deg) rotateY(${mousePosition.x}deg) scale(1.05)`
+                    : 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)',
                 transformStyle: 'preserve-3d'
               }}
             >
-              {/* Certificate Icon/Image */}
+              {/* Container gambar dengan background abu, dibulatkan */}
               <div className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden bg-gray-300">
                 <img
-                  src={certificate.image}
+                  src={`/images/${certificate.image}`}
                   alt={certificate.name}
                   className="w-full h-full object-cover"
                 />
               </div>
               
-              {/* Certificate Info */}
+              {/* Informasi sertifikat */}
               <div className="ml-4 flex-1">
-                <h3 className="font-poppins font-medium text-black text-sm md:text-base mb-1">
+                <h3 className="font-poppins font-medium text-white text-sm md:text-base mb-1">
                   {certificate.name}
                 </h3>
-                <p className="font-poppins text-gray-600 text-xs md:text-sm">
+                <p className="font-poppins text-white text-xs md:text-sm">
                   {certificate.issuer}
                 </p>
               </div>

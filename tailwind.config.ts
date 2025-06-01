@@ -21,7 +21,7 @@ export default {
 		extend: {
 			fontFamily: {
 				'poppins': ['Poppins', 'sans-serif'],
-				'yeseva': ['Yeseva One', 'serif'],
+				
 			},
 			colors: {
 				border: 'hsl(var(--border))',

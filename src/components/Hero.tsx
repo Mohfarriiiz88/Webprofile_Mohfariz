@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Instagram, Mail, Github, ChevronDown } from 'lucide-react';
 import ParticleBackground from './ParticleBackground';
@@ -11,69 +10,150 @@ const Hero = () => {
     }
   };
 
+  // Each bubble will now display the skill name as text
   const skills = [
-    { name: 'Flutter', icon: '📱', color: 'bg-blue-400', size: 'w-16 h-16', position: 'top-20 left-1/3' },
-    { name: 'Python', icon: '🐍', color: 'bg-yellow-500', size: 'w-18 h-18', position: 'top-16 right-1/3' },
-    { name: 'React', icon: '⚛️', color: 'bg-blue-500', size: 'w-20 h-20', position: 'top-32 left-1/4' },
-    { name: 'PHP', icon: '🐘', color: 'bg-purple-600', size: 'w-16 h-16', position: 'top-28 right-1/4' },
-    { name: 'HTML', icon: '🌐', color: 'bg-orange-500', size: 'w-18 h-18', position: 'top-44 left-1/6' },
-    { name: 'CSS', icon: '🎨', color: 'bg-blue-600', size: 'w-16 h-16', position: 'top-40 right-1/6' },
-    { name: 'JavaScript', icon: '⚡', color: 'bg-yellow-400', size: 'w-20 h-20', position: 'top-60 left-1/5' },
-    { name: 'Laravel', icon: '🔥', color: 'bg-red-500', size: 'w-18 h-18', position: 'top-56 right-1/5' },
+    {
+      name: 'Flutter',
+      color: 'bg-blue-400',
+      size: 'w-20 h-20',
+      // 40px above and 40px to the left of the hero container
+      style: { top: '-40px', left: '-40px' },
+    },
+    {
+      name: 'Python',
+      color: 'bg-yellow-500',
+      size: 'w-20 h-20',
+      // 40px above and 40px to the right of the hero container
+      style: { top: '-40px', right: '-40px' },
+    },
+    {
+      name: 'React',
+      color: 'bg-blue-500',
+      size: 'w-20 h-20',
+      // 20px above, 100px to the left
+      style: { top: '-20px', left: '100px' },
+    },
+    {
+      name: 'PHP',
+      color: 'bg-purple-600',
+      size: 'w-20 h-20',
+      // 20px above, 100px to the right
+      style: { top: '-20px', right: '100px' },
+    },
+    {
+      name: 'HTML',
+      color: 'bg-orange-500',
+      size: 'w-20 h-20',
+      // 40px below, 40px to the left
+      style: { bottom: '-40px', left: '-40px' },
+    },
+    {
+      name: 'CSS',
+      color: 'bg-blue-600',
+      size: 'w-20 h-20',
+      // 40px below, 40px to the right
+      style: { bottom: '-40px', right: '-40px' },
+    },
+    {
+      name: 'JavaScript',
+      color: 'bg-yellow-400',
+      size: 'w-20 h-20',
+      // 70px above center
+      style: { top: '-70px', left: '50%', transform: 'translateX(-50%)' },
+    },
+    {
+      name: 'Laravel',
+      color: 'bg-red-500',
+      size: 'w-20 h-20',
+      // 70px below center
+      style: { bottom: '-70px', left: '50%', transform: 'translateX(-50%)' },
+    },
   ];
 
   return (
-    <section id="home" className="min-h-screen flex flex-col items-center justify-center px-4 pt-16 relative overflow-hidden bg-black">
-      {/* Particle Background */}
+    <section
+      id="home"
+      className="
+        relative
+        min-h-screen
+        flex
+        flex-col
+        items-center
+        justify-center
+        px-4
+        pt-16
+        overflow-visible
+        bg-black
+      "
+    >
       <ParticleBackground />
-      
-      {/* Floating skill bubbles - positioned closer to hero image */}
-      <div className="absolute inset-0 pointer-events-none z-10">
-        {skills.map((skill, index) => (
-          <div
-            key={skill.name}
-            className={`absolute ${skill.position} ${skill.color} ${skill.size} rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg pointer-events-auto cursor-pointer hover:scale-110 transition-all duration-300`}
-            style={{
-              animation: `float-${(index % 3) + 1} ${6 + index * 0.2}s ease-in-out infinite`,
-              animationDelay: `${index * 0.3}s`,
-              zIndex: 15,
-            }}
-            title={skill.name}
-          >
-            {skill.icon}
-          </div>
-        ))}
-      </div>
 
-      {/* Hero Content Container */}
-      <div className="flex flex-col items-center justify-center z-20 mt-16">
-        {/* Hero Image - positioned lower */}
-        <div className="mb-8">
+      <div className="relative z-20 flex flex-col items-center justify-center mt-16">
+        <div
+          className="
+            relative
+            w-[300px] sm:w-[350px] md:w-[400px] lg:w-[500px]
+          "
+        >
+          {/* Hero Image */}
           <img
-            src="/lovable-uploads/76751676-95db-4d3c-94a2-3b8afe205366.png"
+            src="/lovable-uploads/font.png"
             alt="Moh. Fariz Portfolio"
-            className="w-full h-auto object-contain max-w-md md:max-w-lg lg:max-w-xl"
+            className="w-full h-auto object-contain"
           />
+
+          {/* Floating skill bubbles with text */}
+          {skills.map((skill, index) => (
+            <div
+              key={skill.name}
+              className={`
+                absolute
+                ${skill.color}
+                ${skill.size}
+                rounded-full
+                flex
+                items-center
+                justify-center
+                text-white
+                text-sm
+                font-semibold
+                shadow-lg
+                cursor-pointer
+                hover:scale-110
+                transition-all
+                duration-300
+              `}
+              style={{
+                ...skill.style,
+                animation: `float-${(index % 3) + 1} ${5 + index * 0.2}s ease-in-out infinite`,
+                animationDelay: `${index * 0.3}s`,
+                zIndex: 25,
+              }}
+              title={skill.name}
+            >
+              {skill.name}
+            </div>
+          ))}
         </div>
 
         {/* Social Icons */}
-        <div className="flex space-x-6 mb-8">
+        <div className="flex space-x-6 mt-8 mb-8 z-30">
           <a
-            href="#"
+            href="https://www.instagram.com/mochfarriiiz"
             className="text-white hover:opacity-75 transition-opacity duration-300"
             aria-label="Instagram"
           >
             <Instagram size={32} />
           </a>
           <a
-            href="#"
+            href="mailto:mohfariz88@gmail.com"
             className="text-white hover:opacity-75 transition-opacity duration-300"
             aria-label="Email"
           >
             <Mail size={32} />
           </a>
           <a
-            href="#"
+            href="https://github.com/Mohfarriiiz88"
             className="text-white hover:opacity-75 transition-opacity duration-300"
             aria-label="GitHub"
           >
@@ -84,7 +164,7 @@ const Hero = () => {
         {/* Scroll Down Button */}
         <button
           onClick={scrollToAbout}
-          className="text-white hover:opacity-75 transition-opacity duration-300 animate-bounce z-10"
+          className="text-white hover:opacity-75 transition-opacity duration-300 animate-bounce z-30"
           aria-label="Scroll down"
         >
           <ChevronDown size={32} />
