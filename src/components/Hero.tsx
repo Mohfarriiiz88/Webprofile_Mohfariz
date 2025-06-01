@@ -10,79 +10,84 @@ const Hero = () => {
     }
   };
 
+  const skills = [
+    { name: 'Flutter', color: 'bg-blue-400', position: 'top-8 left-12', lineStart: { x: 50, y: 30 } },
+    { name: 'PHP', color: 'bg-green-600', position: 'top-16 right-16', lineStart: { x: 85, y: 35 } },
+    { name: 'Laravel', color: 'bg-red-500', position: 'top-24 right-32', lineStart: { x: 80, y: 40 } },
+    { name: 'UI UX', color: 'bg-green-400', position: 'left-8 top-1/2', lineStart: { x: 25, y: 50 } },
+    { name: 'CSS', color: 'bg-blue-600', position: 'left-16 bottom-32', lineStart: { x: 30, y: 70 } },
+    { name: 'Html', color: 'bg-orange-500', position: 'left-1/3 bottom-16', lineStart: { x: 40, y: 80 } },
+    { name: 'Python', color: 'bg-purple-600', position: 'right-1/3 bottom-24', lineStart: { x: 65, y: 75 } },
+    { name: 'Js', color: 'bg-yellow-500', position: 'right-12 bottom-20', lineStart: { x: 75, y: 70 } },
+    { name: 'Flask', color: 'bg-purple-400', position: 'top-1/3 right-12', lineStart: { x: 80, y: 45 } },
+    { name: 'Mysql', color: 'bg-pink-500', position: 'bottom-1/3 right-8', lineStart: { x: 85, y: 65 } },
+  ];
+
   return (
-    <section id="home" className="min-h-screen flex flex-col items-center justify-center px-4 pt-16">
-      {/* Hero SVG Container */}
-      <div className="w-full max-w-4xl flex justify-center mb-8">
-        {/* Placeholder for hero.svg - creating a visual representation based on the design */}
-        <div className="relative w-full max-w-2xl aspect-[4/3] flex items-center justify-center">
-          {/* Main content area */}
-          <div className="text-center">
-            <h1 className="font-yeseva text-4xl md:text-6xl lg:text-7xl text-white mb-4">
-              Moh. Fariz
-            </h1>
-            <h2 className="font-yeseva text-2xl md:text-3xl lg:text-4xl text-white opacity-80">
-              Portfolio
-            </h2>
-          </div>
+    <section id="home" className="min-h-screen flex flex-col items-center justify-center px-4 pt-16 relative overflow-hidden">
+      {/* Hero Container */}
+      <div className="w-full max-w-4xl flex justify-center mb-8 relative">
+        {/* Main Hero Image */}
+        <div className="relative w-full max-w-md aspect-square flex items-center justify-center">
+          <img
+            src="/hero.png"
+            alt="Moh. Fariz Portfolio Hero"
+            className="w-full h-full object-contain z-10 relative"
+          />
           
-          {/* Floating skill tags positioned around the main content */}
+          {/* SVG for connecting lines */}
+          <svg 
+            className="absolute inset-0 w-full h-full pointer-events-none z-0"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+          >
+            {skills.map((skill, index) => {
+              const endX = 50; // Center of hero image
+              const endY = 50; // Center of hero image
+              const { x: startX, y: startY } = skill.lineStart;
+              
+              // Create a curved path
+              const midX = (startX + endX) / 2 + (Math.sin(index) * 10);
+              const midY = (startY + endY) / 2 + (Math.cos(index) * 8);
+              
+              return (
+                <path
+                  key={skill.name}
+                  d={`M ${startX} ${startY} Q ${midX} ${midY} ${endX} ${endY}`}
+                  stroke="rgba(255, 255, 255, 0.3)"
+                  strokeWidth="0.5"
+                  fill="none"
+                  className="animate-pulse"
+                  style={{
+                    animationDelay: `${index * 0.2}s`,
+                    animationDuration: '3s'
+                  }}
+                />
+              );
+            })}
+          </svg>
+          
+          {/* Floating skill tags positioned around the hero image */}
           <div className="absolute inset-0 pointer-events-none">
-            {/* Flutter */}
-            <div className="absolute top-0 left-8 md:left-16 bg-blue-400 text-white px-3 py-1 rounded-full text-sm font-poppins animate-float-1">
-              Flutter
-            </div>
-            
-            {/* PHP */}
-            <div className="absolute top-12 right-4 md:right-12 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-poppins animate-float-2">
-              PHP
-            </div>
-            
-            {/* Laravel */}
-            <div className="absolute top-20 right-16 md:right-32 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-poppins animate-float-3">
-              Laravel
-            </div>
-            
-            {/* UI/UX */}
-            <div className="absolute left-4 top-1/2 bg-green-400 text-white px-3 py-1 rounded-full text-sm font-poppins animate-float-1">
-              UI UX
-            </div>
-            
-            {/* CSS */}
-            <div className="absolute left-12 bottom-24 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-poppins animate-float-2">
-              CSS
-            </div>
-            
-            {/* HTML */}
-            <div className="absolute left-1/3 bottom-12 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-poppins animate-float-3">
-              Html
-            </div>
-            
-            {/* Python */}
-            <div className="absolute right-1/3 bottom-20 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-poppins animate-float-1">
-              Python
-            </div>
-            
-            {/* JS */}
-            <div className="absolute right-8 bottom-16 bg-yellow-500 text-black px-3 py-1 rounded-full text-sm font-poppins animate-float-2">
-              Js
-            </div>
-            
-            {/* Flask */}
-            <div className="absolute top-1/3 right-8 bg-purple-400 text-white px-3 py-1 rounded-full text-sm font-poppins animate-float-3">
-              Flask
-            </div>
-            
-            {/* MySQL */}
-            <div className="absolute bottom-1/3 right-4 bg-pink-500 text-white px-3 py-1 rounded-full text-sm font-poppins animate-float-1">
-              Mysql
-            </div>
+            {skills.map((skill, index) => (
+              <div
+                key={skill.name}
+                className={`absolute ${skill.position} ${skill.color} text-white px-3 py-1 rounded-full text-sm font-poppins pointer-events-auto cursor-pointer hover:scale-110 transition-transform duration-300`}
+                style={{
+                  animation: `float-${(index % 3) + 1} ${4 + index * 0.5}s ease-in-out infinite`,
+                  animationDelay: `${index * 0.3}s`,
+                  zIndex: 5
+                }}
+              >
+                {skill.name}
+              </div>
+            ))}
           </div>
         </div>
       </div>
 
       {/* Social Icons */}
-      <div className="flex space-x-6 mb-8">
+      <div className="flex space-x-6 mb-8 z-10">
         <a
           href="#"
           className="text-white hover:opacity-75 transition-opacity duration-300"
@@ -109,7 +114,7 @@ const Hero = () => {
       {/* Scroll Down Button */}
       <button
         onClick={scrollToAbout}
-        className="text-white hover:opacity-75 transition-opacity duration-300 animate-bounce-gentle"
+        className="text-white hover:opacity-75 transition-opacity duration-300 animate-bounce-gentle z-10"
         aria-label="Scroll down"
       >
         <ChevronDown size={32} />
