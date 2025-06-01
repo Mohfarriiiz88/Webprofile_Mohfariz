@@ -12,18 +12,14 @@ const Hero = () => {
   };
 
   const skills = [
-    { name: 'Flutter', icon: '📱', color: 'bg-blue-400', size: 'w-16 h-16', position: 'top-12 left-8' },
-    { name: 'Python', icon: '🐍', color: 'bg-yellow-500', size: 'w-20 h-20', position: 'top-8 left-1/3' },
-    { name: 'React', icon: '⚛️', color: 'bg-blue-500', size: 'w-18 h-18', position: 'top-16 right-8' },
-    { name: 'PHP', icon: '🐘', color: 'bg-purple-600', size: 'w-22 h-22', position: 'top-6 right-1/4' },
-    { name: 'HTML', icon: '🌐', color: 'bg-orange-500', size: 'w-16 h-16', position: 'left-4 top-1/3' },
-    { name: 'CSS', icon: '🎨', color: 'bg-blue-600', size: 'w-18 h-18', position: 'left-1/4 top-1/2' },
-    { name: 'JavaScript', icon: '⚡', color: 'bg-yellow-400', size: 'w-20 h-20', position: 'right-6 top-1/3' },
-    { name: 'Laravel', icon: '🔥', color: 'bg-red-500', size: 'w-16 h-16', position: 'right-1/3 top-1/2' },
-    { name: 'MySQL', icon: '🗄️', color: 'bg-blue-700', size: 'w-18 h-18', position: 'left-8 bottom-1/3' },
-    { name: 'Git', icon: '📦', color: 'bg-gray-600', size: 'w-16 h-16', position: 'left-1/3 bottom-1/4' },
-    { name: 'Node.js', icon: '🟢', color: 'bg-green-500', size: 'w-20 h-20', position: 'right-8 bottom-1/3' },
-    { name: 'Vue', icon: '💚', color: 'bg-green-400', size: 'w-18 h-18', position: 'right-1/4 bottom-1/4' },
+    { name: 'Flutter', icon: '📱', color: 'bg-blue-400', size: 'w-16 h-16', position: 'top-20 left-1/3' },
+    { name: 'Python', icon: '🐍', color: 'bg-yellow-500', size: 'w-18 h-18', position: 'top-16 right-1/3' },
+    { name: 'React', icon: '⚛️', color: 'bg-blue-500', size: 'w-20 h-20', position: 'top-32 left-1/4' },
+    { name: 'PHP', icon: '🐘', color: 'bg-purple-600', size: 'w-16 h-16', position: 'top-28 right-1/4' },
+    { name: 'HTML', icon: '🌐', color: 'bg-orange-500', size: 'w-18 h-18', position: 'top-44 left-1/6' },
+    { name: 'CSS', icon: '🎨', color: 'bg-blue-600', size: 'w-16 h-16', position: 'top-40 right-1/6' },
+    { name: 'JavaScript', icon: '⚡', color: 'bg-yellow-400', size: 'w-20 h-20', position: 'top-60 left-1/5' },
+    { name: 'Laravel', icon: '🔥', color: 'bg-red-500', size: 'w-18 h-18', position: 'top-56 right-1/5' },
   ];
 
   return (
@@ -31,7 +27,7 @@ const Hero = () => {
       {/* Particle Background */}
       <ParticleBackground />
       
-      {/* Floating skill bubbles - positioned around the top and sides */}
+      {/* Floating skill bubbles - positioned closer to hero image */}
       <div className="absolute inset-0 pointer-events-none z-10">
         {skills.map((skill, index) => (
           <div

@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -100,13 +99,13 @@
     transform: translateY(0px) translateX(0px) rotate(0deg);
   }
   25% {
-    transform: translateY(-12px) translateX(6px) rotate(2deg);
+    transform: translateY(-15px) translateX(8px) rotate(3deg);
   }
   50% {
-    transform: translateY(-20px) translateX(-4px) rotate(-1deg);
+    transform: translateY(-25px) translateX(-6px) rotate(-2deg);
   }
   75% {
-    transform: translateY(-8px) translateX(-8px) rotate(1deg);
+    transform: translateY(-10px) translateX(-10px) rotate(2deg);
   }
 }
 
@@ -115,10 +114,10 @@
     transform: translateY(0px) translateX(0px) rotate(0deg);
   }
   33% {
-    transform: translateY(-15px) translateX(-5px) rotate(-2deg);
+    transform: translateY(-20px) translateX(-8px) rotate(-3deg);
   }
   66% {
-    transform: translateY(-10px) translateX(7px) rotate(1deg);
+    transform: translateY(-12px) translateX(10px) rotate(2deg);
   }
 }
 
@@ -127,16 +126,16 @@
     transform: translateY(0px) translateX(0px) rotate(0deg);
   }
   20% {
-    transform: translateY(-8px) translateX(4px) rotate(1deg);
+    transform: translateY(-10px) translateX(6px) rotate(2deg);
   }
   40% {
-    transform: translateY(-22px) translateX(-6px) rotate(-1deg);
+    transform: translateY(-28px) translateX(-8px) rotate(-2deg);
   }
   60% {
-    transform: translateY(-14px) translateX(3px) rotate(2deg);
+    transform: translateY(-18px) translateX(5px) rotate(3deg);
   }
   80% {
-    transform: translateY(-6px) translateX(-2px) rotate(-1deg);
+    transform: translateY(-8px) translateX(-3px) rotate(-1deg);
   }
 }
 
@@ -180,4 +179,55 @@ html {
 
 .h-26 {
   height: 6.5rem;
+}
+
+/* Scroll-triggered wave animation for headings */
+@keyframes scroll-wave {
+  0% {
+    transform: translateY(30px) rotateX(15deg);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-5px) rotateX(-5deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0) rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+.animate-scroll-wave {
+  animation: scroll-wave 1s ease-out;
+  transform-style: preserve-3d;
+}
+
+/* Enhanced hover animations */
+@keyframes gentle-bounce {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-gentle-bounce {
+  animation: gentle-bounce 2s ease-in-out infinite;
+}
+
+/* Spotlight effect for project cards */
+.spotlight-hover {
+  transition: background 0.3s ease;
+}
+
+/* Tilt effect for certificate cards */
+.tilt-hover {
+  transition: transform 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+/* Particle text effect */
+.scrambled-text {
+  transition: all 0.1s ease;
 }

@@ -1,11 +1,14 @@
 
 import React from 'react';
+import ScrambledText from './ScrambledText';
 
 const About = () => {
+  const bioText = "Hello! I'm Moh Fariz, a Web Developer and Software Engineer based in Tegal, Indonesia. I specialize in building responsive web and mobile applications that are accessible and impactful. My journey in tech has led me to work on various projects that create positive change.";
+
   return (
-    <section id="about" className="py-20 px-4">
+    <section id="about" className="py-20 px-4 relative">
       <div className="max-w-6xl mx-auto">
-        <h2 className="font-yeseva text-3xl md:text-4xl text-white text-center mb-16 animate-fade-in">
+        <h2 className="font-yeseva text-3xl md:text-4xl text-white text-center mb-16 animate-scroll-wave">
           About Me
         </h2>
         
@@ -21,11 +24,12 @@ const About = () => {
             </div>
           </div>
           
-          {/* Bio Text */}
+          {/* Bio Text with Scrambled Effect */}
           <div className="flex-1 text-center md:text-left">
-            <p className="font-poppins text-lg md:text-xl text-white leading-relaxed">
-              Hello! I'm <span className="font-semibold">Moh Fariz</span>, a Web Developer and Software Engineer based in Tegal, Indonesia. I specialize in building responsive web and mobile applications that are accessible and impactful. My journey in tech has led me to work on various projects that create positive change.
-            </p>
+            <ScrambledText 
+              text={bioText}
+              className="font-poppins text-lg md:text-xl text-white leading-relaxed"
+            />
           </div>
         </div>
       </div>
