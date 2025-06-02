@@ -6,7 +6,7 @@ import { componentTagger } from "lovable-tagger";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   // Tambahkan base sesuai nama repo GitHub
-  base: "/Webprofile_Mohfariz/",
+  base: "./",
 
   server: {
     host: "::",
