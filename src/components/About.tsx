@@ -18,7 +18,7 @@ const About: React.FC = () => {
           {/* Avatar dengan TiltedCard */}
           <div className="flex-shrink-0">
             <TiltedCard
-              imageSrc="/lovable-uploads/pp.jpg"
+              imageSrc="/public/images/fariz.jpg"
               altText="Moh. Fariz"
               // Kita pakai 192px (48 × 4 Tailwind) untuk mobile, 192px untuk desktop
               containerWidth="192px"
